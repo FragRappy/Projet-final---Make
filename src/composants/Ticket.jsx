@@ -73,7 +73,6 @@ export default function Ticket() {
       );
       const data = await response.json();
       setClient(data);
-      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {
