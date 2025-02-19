@@ -29,7 +29,6 @@ export default function Ticket() {
       );
       const data = await response.json();
       setTicket(data);
-      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -122,7 +121,6 @@ export default function Ticket() {
       );
 
       const data = await response.json();
-      console.log(data.records);
       setCommentaires(data.records);
     } catch (error) {
       console.error("Erreur lors de la récupération des commentaires:", error);
