@@ -62,7 +62,7 @@ export default function Ticket() {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://api.airtable.com/v0/appyn2ZnvtcsMIijt/tblK8MlWHaOLAvq4N/${ticket?.fields.Client[0]}`,
+        `https://api.airtable.com/v0/appyn2ZnvtcsMIijt/tblyeVOQ31W2EEJJz/${ticket?.fields.Client[0]}`,
         {
           method: "GET",
           headers: {
@@ -72,7 +72,8 @@ export default function Ticket() {
         }
       );
       const data = await response.json();
-      setClient(data);
+      setClient(data.fields);
+      console.log(data.fields);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -168,13 +169,9 @@ export default function Ticket() {
             fz="sm"
             fw={500}
             c="black"
-            bg={(client.fields["Email valide ?"] = true ? "green" : "orange")}
+            bg={client.fldmz3ial2c7CFRCG ? "green" : "orange"}
           >
-            {
-              (client.fields["Email valide ?"] = true
-                ? "Email valide"
-                : "Email non valide")
-            }
+            {client.fldmz3ial2c7CFRCG ? "Email valide" : "Email non valide"}
           </Text>
         )}
         <Card withBorder padding="xl" radius="md" className={classes.card}>
@@ -215,7 +212,7 @@ export default function Ticket() {
                   )}
                   <Group mt="md" justify="space-between">
                     <Text ta="center" fz="md" fw={500} mt="md">
-                      Société : {client && client.fields["Nom"]}
+                      Société : {client && client.Nom}
                     </Text>
                     <Text ta="center" fz="md" fw={500} mt="sm">
                       Projet : {projet && projet.fields["Nom"]}
