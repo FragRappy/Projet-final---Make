@@ -169,9 +169,15 @@ export default function Ticket() {
             fz="sm"
             fw={500}
             c="black"
-            bg={client.fldmz3ial2c7CFRCG ? "green" : "orange"}
+            bg={
+              client["Email valide ?"] && client["Email valide ?"] == true
+                ? "green"
+                : "orange"
+            }
           >
-            {client.fldmz3ial2c7CFRCG ? "Email valide" : "Email non valide"}
+            {client["Email valide ?"] && client["Email valide ?"] == true
+              ? "Email valide"
+              : "Email non valide"}
           </Text>
         )}
         <Card withBorder padding="xl" radius="md" className={classes.card}>
